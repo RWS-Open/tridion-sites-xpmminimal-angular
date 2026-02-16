@@ -1,0 +1,9 @@
+<ng-content></ng-content>
+@if(shouldShowToolbar()){
+<app-tridion-bar
+  [isXpmEnabled]="isXpmEnabled()"
+  [pageLink]="pageLink()"
+  (updateXpmMode)="onToggleXpmMode()"
+  (updateXpmPageMode)="onToggleXpmPageMode()"
+/>
+}

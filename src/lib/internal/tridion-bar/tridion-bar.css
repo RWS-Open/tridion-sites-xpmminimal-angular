@@ -1,0 +1,41 @@
+.headlessXpmBar {
+    background: #007373;
+    padding: 10px 30px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+.headlessXpmBarContainer {
+    align-items: center;
+    display: flex;
+    gap: 30px;
+    justify-content: flex-start;
+}
+
+.headlessXpmBarButtonGroup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.headlessXpmBarButton {
+    background: #034545;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 8px 22px;
+}
+
+.headlessXpmBarButton:hover,
+.headlessXpmBarButtonActive {
+    background: #0d5b95;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, .1), 0 4px 6px -2px rgba(0, 0, 0, .05);
+}
