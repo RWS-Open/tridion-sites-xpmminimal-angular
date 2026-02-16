@@ -1,59 +1,120 @@
-# Example
+# 🧩 headless-xpm-angular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.2.
+A lightweight Angular package that adds edit links to your components or pages, enabling quick access to [RWS](https://rws.com) [Tridion Sites Experience Space](https://www.rws.com/content-management/tridion/sites/) (XPM) — ideal for headless CMS setups.
 
-## Development server
 
-To start a local development server, run:
+## ✨ Features
 
-```bash
-ng serve
+- Adds a visual edit icon/toolbar over React components
+
+- Opens Tridion Experience Space (XPM) directly to the associated item (Page or Component)
+
+- Works in staging environments only (as required by XPM)
+
+- Lightweight and non-intrusive
+
+## 🛠 Requirements
+
+- Tridion Sites 10.1+ 
+
+## 📦 Installation
+
+```sh
+    npm install headless-xpm-angular
+```
+## 🔧 Basic Usage
+
+1. Configure the Provider
+
+   Wrap your application structure (usually in app.html) with the provider.
+
+```ts
+   import { HeadlessXpmProvider } from 'headless-xpm-angular';
+
+   @Component({
+      standalone: true,
+      selector: 'app-root',
+      imports: [RouterOutlet, HeadlessXpmProvider],
+      templateUrl: `
+            <headless-xpm-provider 
+            [editorUrl]="'https://domain.com/ui/editor'"
+            [staging]="true" 
+            [showToolbar]="true" 
+            [showPageEditorLink]="true"
+         >
+            <router-outlet></router-outlet>
+         </headless-xpm-provider>
+      `
+   })
+   export class App {}
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+2. Add Edit Links to Components
+   Use the editor component to wrap specific UI elements you want to make editable.
 
-## Code scaffolding
+```ts
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+   import { HeadlessXpmEditor } from 'headless-xpm-angular';
 
-```bash
-ng generate component component-name
+   @Component({
+      standalone: true,
+      selector: 'app-banner',
+      imports: [HeadlessXpmEditor],
+      template: `
+         <headless-xpm-editor [tcmId]="tcmId">
+            <div class="banner-content">
+                  <h1>{{ title }}</h1>
+                  <p>{{ body }}</p>
+            </div>
+         </headless-xpm-editor>
+      `
+      })
+      export class BannerComponent {
+      @Input() tcmId!: string;
+      @Input() title!: string;
+      @Input() body!: string;
+   }
+
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 🧩 API Reference
 
-```bash
-ng generate --help
-```
+### `<headless-xpm-provider />`
 
-## Building
 
-To build the project run:
+| Prop                 | Type                  | Description                     | Required?               |
+| -------------------- | --------------------- | ------------------------------- | ----------------------- |
+| `editorUrl`          | `string`              | URL to the Experience Space editor | ✅ Yes                   |
+| `staging`            | `boolean`             | Enable the toolbar only in staging | ❌ No (default: `true`) | 
+| `showToolbar`        | `boolean`             | Show/hide the editor toolbar             | ❌ No (default: `true`)  |
+| `showPageEditorLink` | `boolean`             | Show an extra link for the current page           | ❌ No (default: `true`) |
 
-```bash
-ng build
-```
+---
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
-## Running unit tests
+### `<headless-xpm-editor />`
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+| Prop                 | Type                  | Description                         | Required?                     |
+| ---------------------| ----------------------| ----------------------------------- | --------------------------    |
+| `tcmId`              | `string`              | TCM URI of the Page or Component    | ✅ Yes                       |
+| `isPage`             | `boolean`             | Is this a Page (true) or Component (false)? | ❌ No (default: `false`)     |
+| `linkStyle`          | `Object`              | Custom inline styles for the edit link     | ❌ No                        |
+| `iconStyle`          | `Object`              | Custom inline styles for the edit icon                | ❌ No                        |
+| `containerStyle`     | `Object`              | Custom inline styles for the outer wrapper            | ❌ No                        |
+| `contentStyle`       | `Object`              | CSS for the editable content area              | ❌ No                        |
 
-```bash
-ng test
-```
 
-## Running end-to-end tests
+## 👉 Example Angular Apps
 
-For end-to-end (e2e) testing, run:
+Looking for a full implementation? Check out our reference apps:
 
-```bash
-ng e2e
-```
+- [Example Angular Headless App](https://github.com/RWS-Open/tridion-sites-xpmminimal-angular)
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
-## Additional Resources
+## 🛠 Best Practices
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- The editor uses content projection (ng-content). Ensure your wrapped elements are relatively positioned if you intend to customize icon placement.
+
+- Ensure your API provides valid TCM URIs (tcm:pubId-itemId).
+
+- Environment Flags: Pass your environment configuration to the [staging] input to ensure the edit UI is stripped in production.
