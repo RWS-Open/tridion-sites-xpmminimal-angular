@@ -1,5 +1,5 @@
 export const environment = {
-  production: false,
+  production: true,
   apiUrl: '',
   experience_space_editor: "https://domain.com/ui/editor",
   staging: true,
