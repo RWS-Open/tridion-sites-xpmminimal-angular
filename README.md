@@ -1,11 +1,11 @@
-# 🧩 headless-xpm-angular
+# 🧩 xpm-minimal-angular
 
 A lightweight Angular package that adds edit links to your components or pages, enabling quick access to [RWS](https://rws.com) [Tridion Sites Experience Space](https://www.rws.com/content-management/tridion/sites/) (XPM) — ideal for headless CMS setups.
 
 
 ## ✨ Features
 
-- Adds a visual edit icon/toolbar over React components
+- Adds a visual edit icon/toolbar over Angular components
 
 - Opens Tridion Experience Space (XPM) directly to the associated item (Page or Component)
 
@@ -20,7 +20,7 @@ A lightweight Angular package that adds edit links to your components or pages, 
 ## 📦 Installation
 
 ```sh
-    npm install headless-xpm-angular
+    npm install xpm-minimal-angular
 ```
 ## 🔧 Basic Usage
 
@@ -29,7 +29,7 @@ A lightweight Angular package that adds edit links to your components or pages, 
    Wrap your application structure (usually in app.html) with the provider.
 
 ```ts
-   import { HeadlessXpmProvider } from 'headless-xpm-angular';
+   import { HeadlessXpmProvider } from 'xpm-minimal-angular';
 
    @Component({
       standalone: true,
@@ -54,7 +54,7 @@ A lightweight Angular package that adds edit links to your components or pages, 
 
 ```ts
 
-   import { HeadlessXpmEditor } from 'headless-xpm-angular';
+   import { HeadlessXpmEditor } from 'xpm-minimal-angular';
 
    @Component({
       standalone: true,

@@ -1,7 +1,9 @@
 import {  Component, inject, OnInit, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { HeadlessXpmEditor, HeadlessXpmProvider } from 'xpm-minimal-angular';
+
 import { Banner } from "./banner/banner";
-import { HeadlessXpmProvider } from 'headless-xpm-angular';
+
 import { AppService } from './app.service';
 import { TypedPage } from '../types';
 import { Header } from "./header/header";
@@ -15,7 +17,7 @@ import { environment } from '../environments/environment';
 @Component({
   standalone: true,
   selector: 'app-root',
-  imports: [RouterOutlet, HeadlessXpmProvider, Header, Banner, Product, Campaign, Newsroom, Chatbot],
+  imports: [RouterOutlet, HeadlessXpmProvider, Header, Banner, Product, Campaign, Newsroom, Chatbot, HeadlessXpmEditor],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

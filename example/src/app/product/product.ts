@@ -1,5 +1,5 @@
 import { Component, input, signal } from '@angular/core';
-import { HeadlessXpmEditor } from 'headless-xpm-angular';
+import { HeadlessXpmEditor } from 'xpm-minimal-angular';
 import { ComponentData } from '../../types';
 
 

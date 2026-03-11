@@ -1,4 +1,4 @@
-# 🧩 headless-xpm-angular
+# 🧩 xpm-minimal-angular
 
 A lightweight Angular package that adds edit links to your components or pages, enabling quick access to [RWS](https://rws.com) [Tridion Sites Experience Space](https://www.rws.com/content-management/tridion/sites/) (XPM) — ideal for headless CMS setups.
 

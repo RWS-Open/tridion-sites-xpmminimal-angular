@@ -1,9 +1,11 @@
 import { ChangeDetectionStrategy, Component, inject, input, PLATFORM_ID, Signal, effect } from "@angular/core";
+import { isPlatformBrowser } from "@angular/common";
+
 import { TridionBar } from "../internal/tridion-bar/tridion-bar";
 import { XpmStateService } from "../internal/state/headless-xpm-state.service";
-import { injectHeadlessXpmStyles } from '../internal/style/xpm-style';
-import { isPlatformBrowser } from "@angular/common";
 import { HeadlessXpmProviderState } from "../internal/state/headless-xpm-provider.state";
+import { injectHeadlessXpmStyles } from "../internal/style/xpm-style";
+
 
 @Component({
     standalone: true,
